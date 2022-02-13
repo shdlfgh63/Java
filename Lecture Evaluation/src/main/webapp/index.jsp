@@ -28,9 +28,9 @@
                    회원관리
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown">
-                    <a class="dropdown-item" href="#">로그인</a>
-                    <a class="dropdown-item" href="#">회원가입</a>
-                    <a class="dropdown-item" href="#">로그아웃</a>
+                    <a class="dropdown-item" href="userlogin.jsp">로그인</a>
+                    <a class="dropdown-item" href="userjoin.jsp">회원가입</a>
+                    <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
                 </div>
             </li>
         </ul>
@@ -66,7 +66,7 @@
            <h5 class="card-tilte">
               정말 좋은 강의에요.&nbsp;<small>(2017년 가을학기)</small>         
            </h5>
-           <p class="card-text">강의가 많이 널널해서 많이 배운것 없지만 성적이 좋게 나옵니다</p>
+           <p class="card-text">강의가 많고 널널해서 많이 배운것 없지만 성적이 좋게 나옵니다</p>
             <div class="row">
                 <div class="col-9 text-left">
                     성적<span style="color: red;">A</span>
