@@ -48,7 +48,7 @@
              </div>
              <div class="form-group">
                 <label>비밀번호</label>
-                <input type="password" name="Password" class="form-control">
+                <input type="password" name="userPassword" class="form-control">
              </div>
               <div class="form-group">
                 <label>이메일</label>
