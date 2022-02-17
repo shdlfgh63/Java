@@ -108,7 +108,12 @@ public class UserDAO {
 		  pstmt = conn.prepareStatement(SQL);
 		  pstmt.setString(1, userID);		  
 		  rs = pstmt.executeQuery();
-		  return rs.getString(1);
+		  String userEmail = null;
+		  while (rs.next()) {
+			userEmail = rs.getString(1);
+			
+		}
+		  return userEmail;
 		 		 				  
 	  }catch(Exception e) {
 		  e.printStackTrace();

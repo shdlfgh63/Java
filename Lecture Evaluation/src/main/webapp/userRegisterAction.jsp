@@ -43,7 +43,7 @@
 	  session.setAttribute("userID", userID);
 	  PrintWriter script = response.getWriter();   
       script.print("<script>");
-      script.print("location.href = 'emailSendAction.jsp");
+      script.print("location.href = 'emailSendAction.jsp'");
       script.print("</script>");
       script.close();
    }

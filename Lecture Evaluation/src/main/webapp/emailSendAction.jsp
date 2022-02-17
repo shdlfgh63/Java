@@ -42,15 +42,20 @@
    "<a href ='" + host + "emailCheckAction.jsp?code=" + new SHA256().getSHA256(to) + "'>이메일인증하기</a>";
   
    Properties p = new Properties();
-   p.put("mail.smtp.user", from);
-   p.put("mail.smtp.user", "smtp.googlemail.com");
-   p.put("mail.smtp.user", "465");
-   p.put("mail.smtp.starttls.enable", "true");
-   p.put("mail.smtp.auth", "true");
-   p.put("mail.smtp.debug", "true");
-   p.put("mail.smtp.socketFactory.port", "465");
-   p.put("mail.smtp.socketFactory.class", "java.net.ssl.SSLSocketFactory");
-   p.put("mail.smtp.socketFactory.fallback", "false");
+   p.put("mail.smtp.host", "smtp.gmail.com");
+	p.put("mail.smtp.port", "465");
+	p.put("mail.smtp.starttls.enable", "true");
+	p.put("mail.smtp.auth", "true");
+
+
+          //p.put("mail.smtp.starttls.required", "true");
+
+	p.put("mail.smtp.ssl.protocols", "TLSv1.2");
+	
+	p.put("mail.smtp.debug", "true");
+	p.put("mail.smtp.socketFactory.port", "465");
+	p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+	p.put("mail.smtp.socketFactory.fallback", "false");
    
    try{
 	   Authenticator auth = new Gmail();
