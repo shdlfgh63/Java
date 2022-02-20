@@ -18,18 +18,17 @@ String userID=null;
 if(session.getAttribute("userID")!=null){
 	  userID=(String)session.getAttribute("userID");
 }
-if(userID != null){
-   PrintWriter script = response.getWriter();   
+if(userID == null){
+	 PrintWriter script = response.getWriter();   
    script.print("<script>");
-   script.print("alert('로그인이 된 상태입니다.')");
-   script.print("location.href = 'index.jsp';");
+   script.print("alert('로그인을 해주세요.');");
+   script.print("location.href = 'userLogin.jsp';");
    script.print("</script>");
    script.close();
 }
- 
 %>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="index.jsp">강의평가 웹 사이트</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
         <span class="navbar-toggler-icon"></span>
@@ -47,7 +46,7 @@ if(userID != null){
  <%
    if(userID==null){	    
  %>
-                    <a class="dropdown-item" href="userlogin.jsp">로그인</a>
+                    <a class="dropdown-item" href="userLogin.jsp">로그인</a>
                     <a class="dropdown-item" href="userjoin.jsp">회원가입</a>
 <% 
    }else {
@@ -66,27 +65,12 @@ if(userID != null){
       </div>
    </nav>
    <section class="container mt-3" style="max-width: 560px;">
-         <form method="post" action="./userRegisterAction.jsp">
-             <div class="form-group">
-                <label>아이디</label>
-                <input type="text" name="userID" class="form-control">
-             </div>
-             <div class="form-group">
-                <label>비밀번호</label>
-                <input type="password" name="userPassword" class="form-control">
-             </div>
-              <div class="form-group">
-                <label>이메일</label>
-                <input type="email" name="userEmail" class="form-control">
-             </div>
-             
-             <button type="submit" class="btn btn-primary">회원가입</button>
-         </form>
-       
+        <div class="alert alert-warning mt-4" role="alert">
+           이메일 주소 인증을 하셔야 이용 가능합니다. 인증 메일을 받지 못하셨나요?
+        </div>
+       <a href="emailSendAction.jsp" class="btn btn-primary">인증메일 다시 받기</a>
    </section>
-   
-   
-   
+
    <footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
        Copyright &copy; 2022 노일호 All Rights Reserved.
    </footer>

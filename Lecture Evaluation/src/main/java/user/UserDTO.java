@@ -6,7 +6,7 @@ public class UserDTO {
 	private String userPassword;
 	private String userEmail;
 	private String userEmailHash;
-	private boolean userEnmailcheked;
+	private boolean userEmailcheked;
 	public String getUserID() {
 		return userID;
 	}
@@ -32,22 +32,22 @@ public class UserDTO {
 		this.userEmailHash = userEmailHash;
 	}
 	public boolean isUserEnmailcheked() {
-		return userEnmailcheked;
+		return userEmailcheked;
 	}
 	public void setUserEnmailcheked(boolean userEnmailcheked) {
-		this.userEnmailcheked = userEnmailcheked;
+		this.userEmailcheked = userEnmailcheked;
 	}
 	public UserDTO() {
 		
 	}
 	public UserDTO(String userID, String userPassword, String userEmail, String userEmailHash,
-			boolean userEnmailcheked) {
+			boolean userEmailcheked) {
 		super();
 		this.userID = userID;
 		this.userPassword = userPassword;
 		this.userEmail = userEmail;
 		this.userEmailHash = userEmailHash;
-		this.userEnmailcheked = userEnmailcheked;
+		this.userEmailcheked = userEmailcheked;
 	}
 	
 
