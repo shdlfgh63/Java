@@ -51,18 +51,16 @@ public class EvaluationDAO {
 			 lectureDivide = "";
 		 }
 		 ArrayList<EvaluationDTO> evaluationList = null;
-		 String SQL = "SELECT userPassword from USER WHERE userID= ?";
+		 String SQL = "";
 		  Connection conn = null;
 		  PreparedStatement pstmt = null;
 		  ResultSet rs = null;
 		  try {
 			  if(searchType.equals("최신순")) {
-				  SQL="SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName,professorName,evaluationContent) LIKE"+
-			  "?ORDER BY eavlauationID DESC LIMIT"+pageNumber*5+", "+pageNumber*5+6;
+				  SQL="SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName,professorName,evaluationTitle,evaluationContent) LIKE ? ORDER BY evaluationID DESC LIMIT "+ pageNumber *5 +", "+ pageNumber * 5 + 6;
 						  
 			  }else if(searchType.equals("추천순")) {
-				  SQL="SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName,professorName,evaluationContent) LIKE"+
-			  "?ORDER BY like DESC LIMIT"+pageNumber*5+", "+pageNumber*5+6;
+				  SQL="SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName,professorName,evaluationTitle,evaluationContent) LIKE ? ORDER BY likeCount DESC LIMIT "+ pageNumber * 5+ ", " + pageNumber * 5 + 6;
 			  }
 			  conn= DatabaseUtil.getConnection();
 			  pstmt = conn.prepareStatement(SQL);

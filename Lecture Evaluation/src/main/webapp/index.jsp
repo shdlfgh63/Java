@@ -95,11 +95,11 @@ if(userID == null){
 			<select name="LectureDivide" class="form-control mx-1 mt-2">
 				<option value="전체">전체</option>
 				<option value="전공" <%if(lectureDivide.equals("전공")) out.println("selected"); %>>전공</option>
-				<option value="교양"<%if(lectureDivide.equals("교양")) out.println("selected"); %>>>교양</option>
-				<option value="기타"<%if(lectureDivide.equals("기타")) out.println("selected"); %>>>기타</option>
+				<option value="교양"<%if(lectureDivide.equals("교양")) out.println("selected"); %>>교양</option>
+				<option value="기타"<%if(lectureDivide.equals("기타")) out.println("selected"); %>>기타</option>
 			</select>
 			<select name="searchType" class="form-control mx-1 mt-2">
-				<option value="최신순">전체</option>
+				<option value="최신순">최신순</option>
 				<option value="추천순" <%if(searchType.equals("추천순")) out.println("selected"); %>>추천순</option>
 				
 			</select>
@@ -133,7 +133,7 @@ if(userID == null){
 				<p class="card-text"><%=evaluation.getEvaluationContent()%></p>
 				<div class="row">
 					<div class="col-9 text-left">
-						성적<span style="color: red;"><%=evaluation.getCreditScore()%></span> 널널<span style="color: red;"><%=evaluation.getComfortableScore()%></span> 강의<span style="color: red;"><%=evaluation.getLectureScore()%></span> <span style="color: green;">(추천: <%=evaluation.getLike()%>)</span>
+						성적<span style="color: red;"><%=evaluation.getCreditScore()%></span> 널널<span style="color: red;"><%=evaluation.getComfortableScore()%></span> 강의<span style="color: red;"><%=evaluation.getLectureScore()%></span> <span style="color: green;">(추천: <%=evaluation.getLikeCount()%>)</span>
 					</div>
 					<div class="col-3 text-right">
 						<a onclick="return confirm('추천하시겠습니끼?')" href="./likeAction.jsp?evaluationID=">추천</a> <a onclick="return confirm('추천하시겠습니끼?')" href="./delte Action.jsp?evaluationID=">삭제</a>
@@ -147,7 +147,35 @@ if(userID == null){
 	</section>
     <ul class="pagination justify-content-center mt-3">
           <li class = "page-item">
-          
+<%
+    if(pageNumber<=0){
+%>    
+    <a class="page-link disabled">이전</a>      
+<%
+    } else {
+%>
+    <a class ="page-link" href="./index.jsp?lectureDivide=<%=URLEncoder.encode(lectureDivide,"utf-8") %>&searchType=
+    <%=URLEncoder.encode(searchType,"utf-8")%>&search=<%=URLEncoder.encode(search,"utf-8")%>&pageNumber=
+    <%=pageNumber-1 %>">이전</a>
+<%
+    }
+%>          
+          </li>
+          <li>
+<%
+    if(evaluationList.size() < 6){
+%>    
+    <a class="page-link disabled">다음</a>      
+<%
+    } else {
+%>
+    <a class ="page-link" href="./index.jsp?lectureDivide=<%=URLEncoder.encode(lectureDivide,"utf-8") %>&searchType=
+    <%=URLEncoder.encode(searchType,"utf-8") %>&search=<%=URLEncoder.encode(search,"utf-8")%>&pageNumber=
+    <%=pageNumber+1 %>">다음</a>
+<%
+    }
+%>             
+          </li>          
     </ul>
 	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 		<div class="modal-dialog">

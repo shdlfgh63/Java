@@ -25,7 +25,7 @@ if(userID == null){
    script.print("location.href = 'userLogin.jsp';");
    script.print("</script>");
    script.close();
-}
+ }
 %>
 
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
