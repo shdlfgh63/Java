@@ -108,7 +108,7 @@ public class EvaluationDTO {
 	
 	public EvaluationDTO(int evaluationID, String userID, String lectureName, String professorName, int lectureYear,
 			String semesterDivide, String lectureDivide, String evaluationTitle, String evaluationContent,
-			String totalScore, String creditScore, String comfortableScore, String lectureScore, int like) {
+			String totalScore, String creditScore, String comfortableScore, String lectureScore, int likeCount) {
 		
 		this.evaluationID = evaluationID;
 		this.userID = userID;
