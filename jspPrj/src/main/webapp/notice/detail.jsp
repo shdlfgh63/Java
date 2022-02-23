@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -6,9 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>     
 <%
-
 int id = Integer.parseInt(request.getParameter("id"));
-
 String driver  ="oracle.jdbc.driver.OracleDriver";
 String url = "jdbc:oracle:thin:@localhost:1521:XE";
 String sql = "SELECT * FROM NOTICE WHERE ID=?";
@@ -19,11 +18,21 @@ Class.forName(driver);
 Connection conn = DriverManager.getConnection(url,user,pwd);
 PreparedStatement pstmt = conn.prepareStatement(sql);
 pstmt.setInt(1, id);
-
 ResultSet rs =pstmt.executeQuery();
 
 rs.next();
-%>  
+
+String title = rs.getString("TITLE"); 
+Date regdate = rs.getDate("REGDATE"); 	
+String writerID = rs.getString("WRITER_ID");
+String hit = rs.getString("HIT"); 
+String content = rs.getString("CONTENT"); 
+String files = rs.getString("FILES");
+ 
+rs.close();
+pstmt.close();
+conn.close();%>
+		
 <!DOCTYPE html>
 <html>
 
@@ -174,24 +183,24 @@ rs.next();
 							<tbody>
 								<tr>
 									<th>제목</th>
-									<td class="text-align-left text-indent text-strong text-orange" colspan="3"><%=rs.getString("TITLE") %></td>
+									<td class="text-align-left text-indent text-strong text-orange" colspan="3"><%=title %></td>
 								</tr>
 								<tr>
 									<th>작성일</th>
-									<td class="text-align-left text-indent" colspan="3"><%=rs.getDate("REGDATE") %>	</td>
+									<td class="text-align-left text-indent" colspan="3"></td>
 								</tr>
 								<tr>
 									<th>작성자</th>
-									<td><%=rs.getString("WRITER_ID") %></td>
+									<td><%=writerID %></td>
 									<th>조회수</th>
-									<td><%=rs.getString("HIT") %></td>
+									<td><%=hit %></td>
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td colspan="3"></td>
+									<td colspan="3"><%=files %></td>
 								</tr>
 								<tr class="content">
-									<td colspan="4"><%=rs.getString("CONTENT") %></td>
+									<td colspan="4"><%=content %></td>
 								</tr>
 							</tbody>
 						</table>
@@ -265,6 +274,4 @@ rs.next();
     </body>
     
     </html>
-     <% rs.close();
-		 pstmt.close();
-		 conn.close();%>
+    
