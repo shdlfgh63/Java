@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import jspPrj.web.entity.Notice;
 @WebServlet("/notice/detail")
 public class NoticeDetailController extends HttpServlet{
 	
@@ -45,13 +47,24 @@ public class NoticeDetailController extends HttpServlet{
 			String content = rs.getString("CONTENT"); 
 			String files = rs.getString("FILES");
 			
+			Notice notice = new Notice(
+					id,
+					title,
+					regdate,					
+					writerID,					
+					hit,
+					files,
+					content);
+			
+			request.setAttribute("n", notice);
+			/*
 			request.setAttribute("title", title);
 			request.setAttribute("regdate", regdate);
 			request.setAttribute("writerID", writerID);
 			request.setAttribute("hit", hit);
 			request.setAttribute("files", files);
 			request.setAttribute("content", content);
-			 
+			 */
 			rs.close();
 			pstmt.close();
 			conn.close();
