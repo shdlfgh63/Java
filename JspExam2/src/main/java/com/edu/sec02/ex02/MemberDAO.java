@@ -199,7 +199,36 @@ public class MemberDAO {
 		}
     	return memberVO;
     }
-    
+    //-----------------------------------------------------------------------------------------------------------
+    // id에 해당하는 회원 정보 수정하기
+    //-----------------------------------------------------------------------------------------------------------
+    public void upMember(MemberVO memberVO) {
+    	
+    	try {
+			conn = dataFactory.getConnection();
+						
+			String		id			= memberVO.getId();
+			String		pwd			= memberVO.getPwd();
+			String		name		= memberVO.getName();
+			String		email		= memberVO.getEmail();
+			
+			String query = "UPDATE t_member SET pwd=?,name=?,email=? WHERE id=?";
+			pstmt = conn.prepareStatement(query);
+			
+			
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			pstmt.setString(4, id);
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+			
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}   	
+    }
 } // End - public class MemberDAO
 
 
