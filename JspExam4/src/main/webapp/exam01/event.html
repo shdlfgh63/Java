@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+  $(function(){
+	  $("button").on({
+		  mouseenter: function(){
+			  $("#text").append("<h3>마우스가 버튼위로 올라갔습니다</h3>")
+		  },
+	      Click: function(){
+	    	  $("text").append("<h3>마우스로 버튼을 클릭했습니다</h3>")  
+	      },
+	      mouseleave : function(){
+	    	  $("#text").append("<h1>마우스가 버튼을 벗어났습니다.</h1>")
+	      }
+	  });
+  })
+</script>
+<title>event.html</title>
+</head>
+<body>
+  <h1>on() method</h1>
+  <h2><button>마우스를 버튼 위에 올려보시거나, 클릭해보세요</button></h2>
+  <p id="text"></p>
+
+
+</body>
+</html>

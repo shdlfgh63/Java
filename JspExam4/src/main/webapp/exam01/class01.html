@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+ <style>
+   .lined{
+     text-decoration: line-through;
+     color:           magenta;
+   }
+ </style>
+ <script>
+   $(function(){
+	  $("#addBtn").on("click",function(){
+		  $("#first,#second").addClass("lined");
+	  }); 
+	  
+	 $("#removerBtn").on("click",function(){
+		  $("#first","#second").removeClass("lined");
+	  });
+	  
+   });
+   
+  
+ 
+ </script>
+<title>class01.html</title>
+</head>
+<body>
+   <h1>클래스의 추가 및 제거하기</h1>
+   <p id="first">이 단락에 클래스를 추가해 보겠습니다</p>
+   <p>이 단락에는 클래스를 추가하지 않습니다.</p>
+   <p id="second">이 단락에 클래스를 추가해 보겠습니다</p>
+   <button id="addBtn">클래스 추가하기</button>
+   <button id="removeBtn">클래스 제거하기</button>
+   
+</body>
+</html>

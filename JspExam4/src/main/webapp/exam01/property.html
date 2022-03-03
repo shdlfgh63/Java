@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+  $(function(){
+	  $("#settingBtn").on("click",function(){
+		  $("#word").attr("title","제이쿼리를 즐겁게 배우고 있습니다").css("color","magenta")
+	  });
+	  $("#removeBtn").on("click",function(){
+		 $("#word").removeAttr("title").css("color","green"); 
+	  });
+	  $("#setBtn").on("click",function(){
+		 $("input[value='Spring']").prop({
+			 checked: true
+		 }) 
+	  });
+	  $("#remBtn").on("click",function(){
+		 $("input[value='JSP']").removeProp("checked"); 
+	  });
+  });
+   
+  </script>
+  <title>property.html</title>
+</head>
+<body>
+   <h1>.attr() method</h1>
+   <p>이 <span id="word">단어</span>에 title 속성을 설정해 봅시다.</p>
+   <p>밑의 버튼을 누른 후에 단어 위로 마우스를 올려놓아보세요.</p>
+   <button id="settingBtn">속성 값 설정</button>
+   <button id="removerBtn">속성 제거</button> 
+   <hr>
+   <h1>.prop() method</h1>
+   <form>
+      <input type = "checkbox" name="lecture" value="JSP" checked>JSP<br/>
+      <input type = "checkbox" name ="lecture" value="Spring">Spring
+   </form>
+   <button id="setBtn">jQuery에 프로퍼티 값 설정</button>
+   <button id="remBtn">프로퍼티 제거</button>
+</body>
+</html>

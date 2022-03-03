@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>event03.html</title>
+<script>
+   $(function(){
+	   $(document).on("click",function(){
+		   $("#text").append("마우스로 버튼을 클릭했습니다.<br/>");
+	   });
+	   
+	   $(document).on("click",function(){
+		   $("#clickBtn").off("click");
+	   });
+   })
+</script>
+</head>
+<body>
+   <h1>off() method</h1>
+   <button id="clickBtn">마우스를 클릭하세요</button>
+   <button id="removeBtn">클릭 이벤트를 제거합니다</button>
+   <p id="text"></p>
+</body>
+</html>

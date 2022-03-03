@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+ 
+ 
+  $(function(){
+	$("#showBtn").on("click",function(){
+		$("#text").show();
+	});
+	
+	$("#hideBtn").on("click",function(){
+		$("#text").hide();
+	});
+	
+ });
+ 
+ 
+/* $(function(){
+		$(document).on("click","#showBtn",function(){
+			$("#text").show();
+		});
+		
+		$(document).on("click","#hideBtn",function(){
+			$("#text").hide();
+		});
+	 }); 
+ */
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+   <h1>요소를 표시하거나 숨기기</h1>
+   <button id="showBtn">요소 보이기</button>
+   <button id="hideBtn">요소 숨기기</button>
+   <h2><p id="text">이 단락을 보이거나 숨기게 할 겁니다</p></h2>
+   <p>css의 display 속성 값을 none으로 설정하기 때문에 웹 페이지의 레이아웃에서 사라지게 된다.</p>
+</body>
+</html>

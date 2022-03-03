@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>event02.html</title>
+<script>
+  $(function(){
+	 $("body").on({
+		 click: function(){
+			 $("text").html("버튼을 클릭하였습니다.")
+		 } 
+	 },"#btnOK"); 
+  });
+</script>
+</head>
+<body>
+  <h1>이벤트 연결</h1>
+  <button id="btnOK">버튼을 클릭하세요!</button>
+  <p id="text"></p>
+
+</body>
+</html>

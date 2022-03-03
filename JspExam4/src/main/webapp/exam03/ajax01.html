@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+function fn_process(){
+	$.ajax({
+		type = "get",
+		async: false,
+		url: "http://localhost:8099/ajaxTest1",
+		data: {param: "Hello, jQuery"},
+		dataType: "text",
+		success: function(data,textStatus){
+			$("#message").append(data);
+		},
+		
+		error: function(data,textStatus){
+		   alert("에러가 발생하였습니다.");	
+		},
+		complete: function(data, textStatus){
+			alert("작업을 완료하였습니다");
+		}
+	});
+}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+   <input type="button" value="전송" onclick="fn_process()" />
+   <hr>
+   <div id="message"></div>
+</body>
+</html>

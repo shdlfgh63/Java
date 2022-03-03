@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(function(){
+	 $(document).on("keypress",function(){
+		 $("#str").html(event.type+" : "+event.which);
+	 }) 
+  });
+</script>
+
+<title>event05.html</title>
+</head>
+<body>
+    <h1>keypress() method</h1>
+    <p>아래의 공란에 글자를 입력해보세요.</p>
+    <input type="text" id="key"/>
+    <p id="str"></p>
+</body>
+</html>
