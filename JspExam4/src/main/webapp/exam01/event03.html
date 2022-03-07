@@ -6,14 +6,14 @@
 <title>event03.html</title>
 <script>
    $(function(){
-	   $(document).on("click",function(){
-		   $("#text").append("마우스로 버튼을 클릭했습니다.<br/>");
-	   });
-	   
-	   $(document).on("click",function(){
-		   $("#clickBtn").off("click");
-	   });
-   })
+	  $("#clickBtn").on("click",function(){
+		$("#text").append("<h2>버튼을 클릭했습니다</h2>")  
+	  });
+	  
+	  $("#removeBtn").on("click",function(){
+			$("#text").off("click")  
+		  });
+   });
 </script>
 </head>
 <body>

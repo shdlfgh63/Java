@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>아이디 중복 체크</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+	function fnc_process() {
+		// 텍스트 박스에 입력한 아이디를 가져온다.
+		var	_id	= $("#t_id").val();
+		// 입력한 아이디가 없으면 메시지를 출력한다.
+		if(_id == "") { 
+			alert("ID는 필수입력 항목입니다.");
+			return;
+		}
+		/*
+		if(_id.length < 8) {
+			alert("ID는 최소 8자 이상을 입력하셔야 합니다.");
+		}
+		*/
+		$.ajax({
+			type:		"post",
+			async:		true,
+			url:		"http://localhost:8099/mem",
+			dataType:	"text",
+			data:		{id: _id},	// id를 서블릿으로 전송한다.
+			success:	function(data, textStatus) {
+				// 서버에서 전송된 결과에 따라 메시지를 표시한다.
+				if(data == "usable") {
+					$("#message").text("사용할 수 있는 ID입니다.");
+					// 사용할 수 있는 ID면 버튼을 비활성화 시킨다.
+					$("#btnDuplicate").prop("disabled", true);
+				} else {
+					$("#message").text("이미 사용 중인 ID입니다.");
+				}
+			},
+			error:		function(data, textStatus) {
+				alert("에러가 발생하였습니다.");
+			},
+			complete:	function(data, textStatus) {
+				alert("작업이 완료되었습니다.");
+			}
+		});
+	}
+	</script>
+</head>
+<body>
+	<h1>회원 아이디 검사</h1>
+	<input type="text" id="t_id"/>
+	<input type="button" id="btnDuplicate" value="ID 중복 검사" onclick="fnc_process()"/>
+	<hr>
+	<h3>ID는 최소 8자 이상을 입력하셔야 합니다.</h3>
+	<div id="message"></div> <!-- 조회한 결과를 보여주는 곳. -->
+</body>
+</html>

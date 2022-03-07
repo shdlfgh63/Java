@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-function fn_process(){
-	$.ajax({
-		type = "get",
-		async: false,
-		url: "http://localhost:8099/ajaxTest1",
-		data: {param: "Hello, jQuery"},
-		dataType: "text",
-		success: function(data,textStatus){
-			$("#message").append(data);
-		},
-		
-		error: function(data,textStatus){
-		   alert("에러가 발생하였습니다.");	
-		},
-		complete: function(data, textStatus){
-			alert("작업을 완료하였습니다");
-		}
-	});
-}
-</script>
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>ajax01.html</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+	function fn_process(){
+		$.ajax({
+			type:		"get", // type : 전송 방식(get 또는 post)
+			async:		false,// true=동기식, false=비동기식
+			url:		"http://localhost:8099/ajaxTest1", // 요청할 URL
+			data:		{param:"Hello, jQuery"}, // 서버로 전송할 데이터
+			dataType:	"text", // 서버에서 전송받을 데이터 형식
+			success:	function(data, textStatus){
+				$("#message").append(data);
+			},
+			error:		function(data, textStatus){
+				alert("에러가 발생하였습니다.");	
+			},
+			complete:	function(data, textStatus){
+				alert("작업을 완료하였습니다.");
+			}
+		});
+	};
+	</script>
 </head>
 <body>
-   <input type="button" value="전송" onclick="fn_process()" />
-   <hr>
-   <div id="message"></div>
+	<input type="button" value="전송" onclick="fn_process()"/>
+	<hr>
+	<div id = "message"></div>
 </body>
 </html>

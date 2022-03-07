@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+	function fnc_process() {
+		$.ajax({
+			type:		"post",
+			async:		false,
+			url:		"http://localhost:8099/ajaxTest2",
+			dataType:	"xml",
+			success:	function(info, textStatus) {
+				$(info).find("book").each(function() {
+					var	title 	= $(this).find("title").text();
+					var	writer 	= $(this).find("writer").text();
+					var	image	= $(this).find("image").text();
+					$("#bookInfo").append(
+						"<p>" + title 	+ "</p>"	+
+						"<p>" + writer	+ "</p>"	+
+						"<img src="		+ image		+ ">"
+					);
+				});
+			},
+			error:		function(data, textStatus) {
+				alert("에러가 발생하였습니다.");
+			},
+			complete:	function(data, textStatus) {
+				alert("작업을 완료하였습니다.");
+			}
+		});
+	}
+	</script>
+</head>
+<body>
+	<div id="bookInfo"></div>
+	<input type="button" value="도서요청" onclick="fnc_process()"/>
+</body>
+</html>

@@ -6,7 +6,7 @@
 <title>event04.html</title>
 
 <script>
-/*   $(function(){
+   $(function(){
 	   $("button").click(function(){
 		   $("#clickBtn").css("color","green");
 		   $("#doubleClickBtn").css("color","magenta");
@@ -22,26 +22,13 @@
 	   })
 	   
    });
-   */
-   $(function(){
-	  $(document).on("click","button",function(){
-		 $("#clickBtn").css("color","magenta") 
-	  });
-	  
-	  $(document).on("dbclick","button",function(){
-			 $("#doubleClickBtn").css("color","magenta") 
-		  });
-	   
-	  $(document).on("hover","#text",function(){
-			 $("#text").append("<h3>마우스가 버튼 위에 올라갔거나 빠져나갔습니다</h3>")
-		  });
-	   
-   });
+   
+ 
 </script>
 </head>
 <body>
   <h1>click 과 double click</h1>
   <p>버튼을 <span id="clickBtn">클릭</span>하거나 <span id="doubleClickBtn">더블 클릭</span>하세요!</p>
-  <button>버튼을 클릭해 봅시다</button>
+  <button id="text">버튼을 클릭해 봅시다</button>
 </body>
 </html>

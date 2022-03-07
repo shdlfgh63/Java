@@ -30,7 +30,7 @@ protected void doHandle(HttpServletRequest request, HttpServletResponse response
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String param= request.getParameter("param");
+		String param= (String)request.getParameter("param");
 		System.out.println("클라이언트로부터 전송 받은 문자열 : "+param);
 		
 		PrintWriter out = response.getWriter();
