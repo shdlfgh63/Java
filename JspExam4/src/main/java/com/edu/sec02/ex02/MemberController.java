@@ -1,4 +1,4 @@
-package com.edu.sec02.ex01;
+package com.edu.sec02.ex02;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //-----------------------------------------------------------------------------------------------------------
-// public class MemberController2
+// public class MemberController
 //-----------------------------------------------------------------------------------------------------------
-//@WebServlet("/member/*")
-public class MemberController2 extends HttpServlet {
+@WebServlet("/member/*")
+public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	MemberDAO memberDAO;
@@ -54,7 +54,9 @@ public class MemberController2 extends HttpServlet {
 		if(action == null || action.equals("/listMembers.do")) {	// 회원들의 정보 목록
 			List<MemberVO> membersList = memberDAO.listMembers();
 			request.setAttribute("membersList", membersList);
-			nextPage = "/test02/listMembers.jsp";
+			nextPage = "/test03/listMembers.jsp";
+		} else if(action.equals("/addMemberForm.do")) { // 회원 가입 폼
+			nextPage = "/test03/addMember.jsp";
 		} else if(action.equals("/addMember.do")) {	// 회원 가입 정보 처리
 			String	id		= request.getParameter("id");
 			String	pwd		= request.getParameter("pwd");
@@ -64,13 +66,37 @@ public class MemberController2 extends HttpServlet {
 			// 회원 가입에 필요한 정보들을 생성자를 통해서 저장한다.
 			MemberVO memberVO = new MemberVO(id, pwd, name, email);
 			memberDAO.addMember(memberVO);
+			
+			// 회원 가입 메시지를 attribute에 저장한다.
+			request.setAttribute("msg", "addMember");
+			
 			nextPage = "/member/listMembers.do";
-		} else if(action.equals("/addMemberForm.do")) { // 회원 가입 폼
-			nextPage = "/test02/addMember.jsp";
+		} else if(action.equals("/modMemberForm.do")) { // 회원 정보 수정 폼
+			// 수정할 회원의 아이디를 가져온다.
+			String	id = request.getParameter("id");
+			// 요청된 아이디에 해당하는 정보를 DAO를 통해서 가져온다.
+			MemberVO memInfo = memberDAO.findMember(id);
+			request.setAttribute("memInfo", memInfo);	// 찾은 회원의 정보를 request에 담는다.
+			nextPage = "/test03/modMember.jsp"; 	// 수정화면으로 이동
+		} else if(action.equals("/modMember.do")) { 	//회원 정보 수정 작업
+			// 넘겨 받은 회원의 정보를 MemberVO에 담아서 DAO에 넘겨준다.
+			String 	id		= request.getParameter("id");
+			String	pwd		= request.getParameter("pwd");
+			String	name	= request.getParameter("name");
+			String	email	= request.getParameter("email");
+			MemberVO memberVO = new MemberVO(id, pwd, name, email);
+			memberDAO.modMember(memberVO);
+			request.setAttribute("msg", "modMember");
+			nextPage = "/member/listMembers.do";
+		} else if(action.equals("/delMember.do")) {		//회원 정보 삭제 작업
+			String id = request.getParameter("id");
+			memberDAO.delMember(id);
+			request.setAttribute("msg", "delMember");
+			nextPage = "/member/listMembers.do";
 		} else {
 			List<MemberVO> membersList = memberDAO.listMembers();
 			request.setAttribute("membersList", membersList);
-			nextPage = "/test02/listMembers.jsp";
+			nextPage = "/test03/listMembers.jsp";
 		}
 		// nextPage 변수를 통해서 포워딩을 공동으로 사용한다.
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
@@ -78,5 +104,6 @@ public class MemberController2 extends HttpServlet {
 		
 	} // End - private void doHandle(HttpServletRequest request, HttpServletResponse response)
 	
-} // End - public class MemberController2
+} // End - public class MemberController
+
 

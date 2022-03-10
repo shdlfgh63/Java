@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-@WebServlet("/mem.do")
+//@WebServlet("/mem.do")
 public class MemberController extends HttpServlet {
 
     MemberDAO memberDAO;
