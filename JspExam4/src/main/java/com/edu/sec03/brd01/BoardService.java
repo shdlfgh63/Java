@@ -2,12 +2,8 @@ package com.edu.sec03.brd01;
 
 import java.util.List;
 
-
-
-
-
 //-----------------------------------------------------------------------------------------------------------
-//public class BoardService
+// public class BoardService
 //-----------------------------------------------------------------------------------------------------------
 public class BoardService {
 	BoardDAO boardDAO;
@@ -24,14 +20,22 @@ public class BoardService {
 	// 게시글 전체 목록 보기
 	//-----------------------------------------------------------------------------------------------------------
 	public List<ArticleVO> listArticles() {
-
 		System.out.println("서비스의 게시글목록 보기에 진입했습니다.");
-
 		
 		List<ArticleVO> articlesList = boardDAO.selectAllArticles();
 		// DAO에서 찾아온 게시글 전체 목록을 콘트롤러에게 돌려준다.
 		return articlesList;
 	} // End - public List<ArticleVO> listArticles()
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 등록하기
+	//-----------------------------------------------------------------------------------------------------------
+	public int addArticle(ArticleVO article) {
+		System.out.println("서비스의 게시글 등록하기에 진입했습니다.");
+		
+		// 게시글을 등록한 후에 등록한 게시글의 번호를 Controller에 돌려준다.
+		return boardDAO.insertNewArticle(article);
+	}
 	
 
 } // End - public class BoardService

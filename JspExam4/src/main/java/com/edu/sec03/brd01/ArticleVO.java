@@ -1,10 +1,12 @@
 package com.edu.sec03.brd01;
+
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.Date;
 
 //-----------------------------------------------------------------------------------------------------------
-//게시글
+// 게시글
 //-----------------------------------------------------------------------------------------------------------
 public class ArticleVO {
 
@@ -75,13 +77,24 @@ public class ArticleVO {
 	}
 
 	public String getImageFileName() {
+		try {
+			// 파일이름에 특수문자가 포함되어 있을 경우 인코딩한다.
+			if(imageFileName != null && imageFileName.length() != 0) {
+				this.imageFileName = URLDecoder.decode(imageFileName, "UTF-8");
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		return imageFileName;
 	}
 
 	public void setImageFileName(String imageFileName) {
 		try {
 			// 파일이름에 특수문자가 포함되어 있을 경우 인코딩한다.
-			this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");
+			// 길이 체크는 URLEncoder.encode 사용하기 위한 필수 조건이다.
+			if(imageFileName != null && imageFileName.length() != 0) {
+				this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");
+			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -111,6 +124,4 @@ public class ArticleVO {
 	}
 	
 } // End - public class ArticleVO
-
-
 

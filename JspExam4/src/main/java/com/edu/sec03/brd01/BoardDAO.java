@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 //-----------------------------------------------------------------------------------------------------------
-//게시글 관련 DAO
+// 게시글 관련 DAO
 //-----------------------------------------------------------------------------------------------------------
 public class BoardDAO {
 
@@ -90,6 +90,69 @@ public class BoardDAO {
 		
 		return articlesList;
 	} // End - public List selectAllArticles()
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 새글을 등록하기 위해서 글번호를 추출한다.
+	//-----------------------------------------------------------------------------------------------------------
+	private int getNewArticleNO() {
+		System.out.println("DAO의 새글 번호 추출하기에 진입하였습니다.");
+		try {
+			conn	= dataFactory.getConnection();
+			// 게시글 번호 중 가장 큰 번호보다 1 더 큰수를 추출한다.
+			String	sql = "SELECT MAX(articleNO) FROM t_board ";
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return (rs.getInt(1) + 1);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	} // End - private int getNewArticleNO()
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 등록하기
+	//-----------------------------------------------------------------------------------------------------------
+	public int insertNewArticle(ArticleVO article) {
+		
+		System.out.println("DAO의 게시글목록 보기에 진입했습니다.");
+		int		articleNO		= getNewArticleNO();
+		
+		try {
+			conn	= dataFactory.getConnection();
+			// int		articleNO		= getNewArticleNO();
+			int		parentNO		= article.getParentNO();
+			String	title			= article.getTitle();
+			String	content			= article.getContent();
+			String	id				= article.getId();
+			String	imageFileName	= article.getImageFileName();
+			
+			String	sql = ""; 
+			sql  = "INSERT INTO t_board ";
+			sql	+= "(articleNO, parentNO, title, content, imageFileName, id) ";
+			sql += "VALUES(?, ?, ?, ?, ?, ?) ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt	(1, articleNO);
+			pstmt.setInt	(2, parentNO);
+			pstmt.setString	(3, title);
+			pstmt.setString	(4, content);
+			pstmt.setString	(5, imageFileName);
+			pstmt.setString	(6, id);
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return articleNO;
+	} // End - public void insertNewArticle(ArticleVO article)
+
 	
 } // End - public class BoardDAO
 
