@@ -160,10 +160,10 @@
 									<td class="text-align-left text-indent" colspan="3"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${n.regdate }"/></td>
 								</tr>
 								<tr>
-									<th>작성자</th>
+									<td>작성자</td>
 									<td>${n.writerID}</td>
 									<th>조회수</th>
-									<td><fmt:formatNumber value=" ${n.hit}"/></td>
+									<td><fmt:formatNumber value="${n.hit}"/></td>
 								</tr>
 								<tr>
 									<th>첨부파일</th>
@@ -172,7 +172,7 @@
 									   <c:set var="style" value="" />
 									<c:if test="${fn:endsWith(fileName,'.zip') }">
 									   <c:set var="style" value="font-weight: bold; color:red;" />
-									</c:if/>
+									</c:if>
 									  <a href="fileName">${fn:toUpperCase(fileName)} </a>
 									  <c:if test="$(!st.last)">
 									  </c:if>

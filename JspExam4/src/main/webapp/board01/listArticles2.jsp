@@ -4,7 +4,7 @@
 <c:set var="contextPath" 	value="${pageContext.request.contextPath}"/>
 <%-- HashMpa으로 저장해서 넘어온 값들의 이름이 길기때문에 <c:set>태그를 이용해서 
 	 각 값들을 짧은 변수이름으로 저장한다. --%>
-<c:set var="articlesList"	value="${articlesMap.articlesList}"/>
+<c:set var="articleList"	value="${articlesMap.articleList}"/>
 <c:set var="totArticles"	value="${articlesMap.totArticles}"/>
 <c:set var="section"		value="${articlesMap.section}"/>
 <c:set var="pageNum"		value="${articlesMap.pageNum}"/>
@@ -28,7 +28,6 @@
 	<h1 align="center">게시글 목록 (Paging)</h1>
 	<table align="center" border="1" width="80%">
 		<tr height="10" align="center" bgcolor="lightgreen">
-			<td>No.</td>
 			<td>글번호</td>
 			<td>작성자</td>
 			<td>제 목</td>
@@ -50,7 +49,6 @@
 				<c:forEach var="article"  items="${articlesList}" varStatus="articleNum">
 					<tr align="center">
 						<td width="5%">${articleNum.count}</td>
-						<td width="5%">${article.articleNO}</td>
 						<td width="10%">${article.id}</td>
 						<td align="left" width="35%">
 							<span style="padding-right:30px"></span>
@@ -78,47 +76,45 @@
 	
 	<div class="cls2">
 		<c:if test="${totArticles != null}">
-			<c:choose>
-				<%-- 글의 개수가 100개를 넘을 경우 --%>
-				<c:when test="${totArticles > 100}"> 
-					<c:forEach var="page" begin="1" end="10" step="1">
-						<c:if test="${section > 1 && page == 1}">
-							<%-- ????????????????????????????????????????????? --%>
-							<a class="no-uline" href="${contextPath}/board/listArticles.do
-							?section=${section-1}&pageNum=${(section-1)*10+1}">[이전]</a>
-						</c:if>
+			<%-- 글의 개수가 100개를 넘을 경우 --%>
+			<c:when test="${totArticles > 100}"> 
+				<c:forEach var="page" begin="1" end="10" step="1">
+					<c:if test="${section > 1 && page == 1}">
+						<%-- ????????????????????????????????????????????? --%>
 						<a class="no-uline" href="${contextPath}/board/listArticles.do
-						?section=${section}&pageNum=${page}">${(section-1)*10+page}</a>
-						<c:if test="${page == 10}">
-							<a class="no-uline" href="${contextPath}/board/listArticles.do
-							?section=${section+1}&pageNum=${section*10+1}">[다음]</a>
-						</c:if>
-					</c:forEach>
-				</c:when>	
+						?section=${section-1}&pageNum=${(section-1)*10+1}">[이전]</a>
+					</c:if>
+					<a class="no-uline" href="${contextPath}/board/listArticles.do
+					?section=${section}&pageNum=${page}">${(section-1)*10+page}</a>
+					<c:if test="${page == 10}">
+						<a class="no-uline" href="${contextPath}/board/listArticles.do
+						?section=${section+1}&pageNum=${section*10+1}">[다음]</a>
+					</c:if>
+				</c:forEach>
+			</c:when>	
+			
+			<%-- 등록된 글의 개수가 100개인 경우는 첫 번째 섹션의 10개 페이지만 표시하면 된다. --%>
+			<c:when test="${totArticles == 100}">
+				<c:forEach var="page" begin="1" end="10" step="1">
+					<a class="no-uline" href="#">${page}</a>
+				</c:forEach>
+			</c:when>
 				
-				<%-- 등록된 글의 개수가 100개인 경우는 첫 번째 섹션의 10개 페이지만 표시하면 된다. --%>
-				<c:when test="${totArticles == 100}">
-					<c:forEach var="page" begin="1" end="10" step="1">
-						<a class="no-uline" href="#">${page}</a>
-					</c:forEach>
-				</c:when>
-					
-				<%-- 등록된 글의 개수가 100개 미만인 경우는 
-					 전체 글수를 10으로 나누어 구한 몫에 1을 더한 페이지까지 표시한다.--%>
-				<c:when test="${totArticles < 100}">
-					<c:forEach var="page" begin="1" end="${totArticles / 10 + 1}" step="1">
-						<c:choose>
-							<%-- 페이지 번호와 컨트롤러에서 넘어온 페이지 값이 같으면 빨간색으로 표시한다. --%>
-							<c:when test="${page == pageNum}">
-								<a class="sel-page" href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
-							</c:when>
-							<c:otherwise>
-								<a class="no-uline" href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-				</c:when>
-			</c:choose>
+			<%-- 등록된 글의 개수가 100개 미만인 경우는 
+				 전체 글수를 10으로 나누어 구한 몫에 1을 더한 페이지까지 표시한다.--%>
+			<c:when test="${totArticles < 100}">
+				<c:forEach var="page" begin="1" end="${totArticles / 10 + 1}" step="1">
+					<c:choose>
+						<%-- 페이지 번호와 컨트롤러에서 넘어온 페이지 값이 같으면 빨간색으로 표시한다. --%>
+						<c:when test="${page = pageNum}">
+							<a class="sel-page" href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
+						</c:when>
+						<c:otherwise>
+							<a class="no-uline" href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</c:when>
 		</c:if>
 	</div>
 	

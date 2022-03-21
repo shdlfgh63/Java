@@ -22,53 +22,11 @@ public class NoticeListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		NoticeService service = new NoticeService();
+		List<Notice> list = service.getList(?);
 		
-		List<Notice> list = new ArrayList<>();
-		
-		String driver  ="oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
-		String sql = "SELECT * FROM NOTICE";
-		String user = "rho";
-		String pwd = "0000";
-		
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url,user,pwd);
-			Statement stmt = conn.createStatement();
-			ResultSet rs =stmt.executeQuery(sql);
-
-			while(rs.next()){ 
-				int id = rs.getInt("id");
-				String title = rs.getString("TITLE"); 
-				Date regdate = rs.getDate("REGDATE"); 	
-				String writerID = rs.getString("WRITER_ID");
-				String hit = rs.getString("HIT"); 
-				String content = rs.getString("CONTENT"); 
-				String files = rs.getString("FILES");
-				
-				Notice notice = new Notice(
-						id,
-						title,
-						regdate,					
-						writerID,					
-						hit,
-						files,
-						content);
-				
-				list.add(notice);	
-				
-		   } 	
-
-			rs.close();
-			stmt.close();
-			conn.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 		request.setAttribute("list", list);
-
 		request.getRequestDispatcher("/WEB-INF/view/notice/list.jsp").forward(request, response);
 	}
 

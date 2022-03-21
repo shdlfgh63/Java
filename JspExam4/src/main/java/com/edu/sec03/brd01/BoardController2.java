@@ -25,8 +25,8 @@ import org.apache.commons.io.FileUtils;
 //-----------------------------------------------------------------------------------------------------------
 // public class BoardController
 //-----------------------------------------------------------------------------------------------------------
-@WebServlet("/board/*")
-public class BoardController extends HttpServlet {
+////@WebServlet("/board/*")
+public class BoardController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static String ARTICLE_IMAGE_REPO = "C:\\data\\article_image";
@@ -70,49 +70,16 @@ public class BoardController extends HttpServlet {
 			List<ArticleVO> articlesList = new ArrayList<ArticleVO>();
 			
 			if(action == null) {
-				// 최초 요청 시 또는 listArticles.do로 요청시
-				// section 값과 pageNum 값을 구한다.
-				String	_section	= request.getParameter("section");
-				String	_pageNum	= request.getParameter("pageNum");
 				
-				// 최초 요청시 section 값과 pageNum 값이 없으면 1로 만든다.
-				int	section	= Integer.parseInt( (_section == null) ? "1" : _section);
-				int	pageNum	= Integer.parseInt( (_pageNum == null) ? "1" : _pageNum);
-				
-				Map<String, Integer> pagingMap = new HashMap<String, Integer>();
-				pagingMap.put("section", section);
-				pagingMap.put("pageNum", pageNum);
-				
-				Map articlesMap = boardService.listArticles(pagingMap);
-				
-				articlesMap.put("section", section);
-				articlesMap.put("pageNum", pageNum);
-				
-				request.setAttribute("articlesMap", articlesMap);
+				articlesList = boardService.listArticles();
+				request.setAttribute("articlesList", articlesList);
 				nextPage = "/board01/listArticles.jsp";
 				
 			} else if(action.equals("/listArticles.do")) {	// 전체 게시글 목록 요청
-				// 최초 요청 시 또는 listArticles.do로 요청시
-				// section 값과 pageNum 값을 구한다.
-				String	_section	= request.getParameter("section");
-				String	_pageNum	= request.getParameter("pageNum");
-				
-				// 최초 요청시 section 값과 pageNum 값이 없으면 1로 만든다.
-				int	section	= Integer.parseInt( (_section == null) ? "1" : _section);
-				int	pageNum	= Integer.parseInt( (_pageNum == null) ? "1" : _pageNum);
-				
-				Map<String, Integer> pagingMap = new HashMap<String, Integer>();
-				pagingMap.put("section", section);
-				pagingMap.put("pageNum", pageNum);
-				
-				Map articlesMap = boardService.listArticles(pagingMap);
-				
-				articlesMap.put("section", section);
-				articlesMap.put("pageNum", pageNum);
-				
-				request.setAttribute("articlesMap", articlesMap);
+				articlesList = boardService.listArticles();
+				request.setAttribute("articlesList", articlesList);
 				nextPage = "/board01/listArticles.jsp";
-								
+				
 			} else if(action.equals("/articleForm.do")) {	// 게시글 등록 화면 요청
 				nextPage = "/board01/articleForm.jsp";
 				
