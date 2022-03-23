@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[2.5.0.201010141000-RC1]]></pluginVersion>
+	<pluginVersion><![CDATA[3.9.21.202202040945-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+		<config>src/main/java/com/edu/exam/coffeeshop/coffee4/ApplicationContext.xml</config>
+		<config>src/main/java/com/edu/exam/coffeeshop/coffee5/ApplicationContext.xml</config>
+		<config>src/main/java/com/edu/exam/coffeeshop/coffee6/ApplicationContext.xml</config>
+		<config>src/main/resources/ApplicationContext.xml</config>
+		<config>src/main/java/com/edu/car/mycar04/appCtx.xml</config>
+		<config>src/main/java/com/edu/car/mycar05/appCtx.xml</config>
+		<config>src/main/java/com/edu/car/mycar06/appCtx.xml</config>
 	</configs>
+	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
+	</autoconfigs>
 	<configSets>
 	</configSets>
 </beansProjectDescription>

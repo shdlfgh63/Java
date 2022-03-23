@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hot"		class="com.edu.exam.coffeeshop.coffee6.HotAmericano"></bean>
+	<bean id="ice"		class="com.edu.exam.coffeeshop.coffee6.IceAmericano"></bean>
+	<bean id="coffee"	class="com.edu.exam.coffeeshop.coffee6.Coffee">
+		<property name="coffee" ref="ice"></property>
+	</bean>
+
+</beans>

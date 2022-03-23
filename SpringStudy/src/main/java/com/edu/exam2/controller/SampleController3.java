@@ -11,39 +11,61 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.edu.exam2.vo.MemberVO;
 
+//-----------------------------------------------------------------------------------------------------------
+// public class SampleController3
+//-----------------------------------------------------------------------------------------------------------
 @Controller
 @RequestMapping("/exam01")
 public class SampleController3 {
-    
-	private static final Logger Logger = LoggerFactory.getLogger(SampleController3.class);
+
+	private static final Logger logger = LoggerFactory.getLogger(SampleController3.class);
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// public String doD(Model model)
+	//-----------------------------------------------------------------------------------------------------------
 	@RequestMapping("/doD")
 	public String doD(Model model) {
-		Logger.info("doD 실행.....");
+		logger.info("doD 실행.....");
 		
 		MemberVO memberVO = new MemberVO();
 		memberVO.setUserid("userid001");
 		memberVO.setUserpw("12345678");
 		
-		model.addAttribute("member",memberVO);
+		model.addAttribute("member", memberVO);
 		
-		Logger.info("MemberVO : "+memberVO.toString());
+		logger.info("MemberVO : " + memberVO.toString());
 		
-		return "exam01/data";
-	}
-	
+		return "exam01/data"; // WEB-INF/views/exam01/data.jsp
+	} // End - public String doD(Model model)
+
+	//-----------------------------------------------------------------------------------------------------------
+	// public String doE(Model model)
+	//-----------------------------------------------------------------------------------------------------------
 	@RequestMapping("/doE")
 	public String doE(Model model) {
 		
-		Logger.info("doE 실행....");
+		logger.info("doE 실행.....");
 		
-		Map<String, String> map = new HashMap<String,String>();
+		Map<String, String> map = new HashMap<String, String>();
 		map.put("userid", "userid99");
-		map.put("userpw", "987654321");
+		map.put("userpw", "87654321");
 		
-		model.addAttribute("map",map);
+		model.addAttribute("map", map);
 		
 		return "exam01/data";
-	}
+		
+	} // End - public String doE(Model model)
 	
-}
+	
+} // End - public class SampleController3
+
+
+
+
+
+
+
+
+
+
+

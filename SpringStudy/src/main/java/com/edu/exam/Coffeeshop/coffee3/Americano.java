@@ -1,6 +1,5 @@
-package com.edu.exam.Coffeeshop.coffee3;
+package com.edu.exam.coffeeshop.coffee3;
 
 public interface Americano {
-  public String getName();
-  
+	public String getName();
 }

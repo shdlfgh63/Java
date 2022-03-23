@@ -1,17 +1,17 @@
-package com.edu.exam.Coffeeshop.coffee3;
+package com.edu.exam.coffeeshop.coffee3;
 
 public class CoffeeShop {
 
 	public static void main(String[] args) {
+
+		IceAmericano	ice	= new IceAmericano();
+		HotAmericano	hot	= new HotAmericano();
 		
-		IceAmericano ice = new IceAmericano();
-		HotAmericano hot = new HotAmericano();
-		
-		Coffee coffee1 = new Coffee();
+		Coffee	coffee1	= new Coffee();
 		coffee1.setCoffee(ice);
 		coffee1.coffeeType();
-		
-		Coffee coffee2 = new Coffee();
+
+		Coffee	coffee2	= new Coffee();
 		coffee2.setCoffee(hot);
 		coffee2.coffeeType();
 	}
