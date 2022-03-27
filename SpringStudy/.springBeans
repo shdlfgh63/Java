@@ -14,6 +14,7 @@
 		<config>src/main/java/com/edu/car/mycar04/appCtx.xml</config>
 		<config>src/main/java/com/edu/car/mycar05/appCtx.xml</config>
 		<config>src/main/java/com/edu/car/mycar06/appCtx.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/action-mybatis.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>

@@ -19,12 +19,31 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order"  value="2" />
 	</beans:bean>
 	
 	<!-- Bean으로 만들 대상을 검색할 위치 -->
 	<context:component-scan base-package="com.edu.exam" />
 	<context:component-scan base-package="com.edu.exam2" />
+	<!-- 노민호 아래 컴포넌트 추가 안해놔서 main.do 내 에 있는 매핑 주소로 안넘어갔었음  -->
+	<context:component-scan base-package="com.edu.member"/>
 	
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>classpath:tiles/*.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		<beans:property name="order" value="1"/>
+	</beans:bean>
 	
 	
 </beans:beans>
+
+
+
+
