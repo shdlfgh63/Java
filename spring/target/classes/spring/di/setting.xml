@@ -8,12 +8,14 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
     
-    <context:annotation-config/>
+     
+     <context:component-scan base-package="spring.di.ui,spring.di.entity"/>
+     <!--  
     <bean id="exam1" class="spring.di.entity.NewExam" p:kor="10" p:eng="10" />
     <bean id="exam2" class="spring.di.entity.NewExam" p:kor="10" p:eng="10" />     
-    <bean id="console" class="spring.di.ui.InlineExamConsole">
-    <!--  <property name="exam" ref="exam"/>--> 
-    </bean>
+   <bean id="console" class="spring.di.ui.InlineExamConsole">  
+    <property name="exam" ref="exam"/>
+    </bean> --> 
      
      
      

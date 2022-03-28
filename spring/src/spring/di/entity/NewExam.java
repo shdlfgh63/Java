@@ -1,5 +1,8 @@
 package spring.di.entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class NewExam implements Exam {
     private int kor;
     private int eng;
