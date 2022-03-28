@@ -2,28 +2,28 @@ package com.edu.member.vo;
 
 import java.sql.Date;
 
-
 import org.springframework.stereotype.Component;
 
+//-----------------------------------------------------------------------------------------------------------
+// public class MemberVO
+//-----------------------------------------------------------------------------------------------------------
 @Component("memberVO")
-
 public class MemberVO {
-	private String id;
-	private String pwd;
-	private String name;
-	private String email;
-	private Date joinDate;
+
+	private	String	id;
+	private	String	pwd;
+	private	String	name;
+	private	String	email;
+	private	Date	joinDate;
 
 	public MemberVO() {
-
 	}
-
+	
 	public MemberVO(String id, String pwd, String name, String email) {
-
-		this.id = id;
-		this.pwd = pwd;
-		this.name = name;
-		this.email = email;		
+		this.id		= id;
+		this.pwd	= pwd;
+		this.name	= name;
+		this.email	= email;
 	}
 
 	public String getId() {
@@ -57,13 +57,19 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + "]";
+		return "MemberVO [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", joinDate=" + joinDate
+				+ "]";
 	}
 	
-	
-
-}
+} // End - public class MemberVO

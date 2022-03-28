@@ -9,7 +9,9 @@
 	<meta charset="UTF-8">
 	<title>header</title>
 	
+<!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -17,34 +19,37 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
 </head>
 <body>
 
 <nav class="navbar navbar-inverse navbar-sticky-top">
-   <div class="container-fluid">
-       <div class="navbar-header">
-           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-car"></span>
-              <span class="icon-car"></span>
-              <span class="icon-car"></span>
-           </button>
-           <a class="navbar-brand" href="#">도서 쇼핑몰</a>           
-       </div>
-         <div class="form-group collapse navbar-collapse" id="myNavbar">
-             <form class="navbar-form navbar-right" method="post" action="${contextPath}/member/login.Form.do">
-                 <div class="form-group">
-                    <input type="text" class="form-control" name="id" size="10" maxlength="10" placeholder="아이디"/>
-                    <input type="password" class="form-control" name="passwd" size="12" maxlength="20" placeholder="비밀번호"/>                    
-                 </div>
-                 <a href="" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span>책방 둘러보기</a>
-                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>로그인</button>
-                 <a href="${contextPath}/member/memberForm.do" class="btn btn-warning"><span class="glyphicon glyphicon-user"></span>회원가입</a>
-                 
-             </form>
-         </div>
-   </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-car"></span>
+				<span class="icon-car"></span>
+				<span class="icon-car"></span>
+			</button>
+			<a class="navbar-brand" href="#">
+				<img alt="Brand" src="${contextPath}/resources/images/logo.gif"/ style="width:170px; height:40px"; />도서쇼핑몰</a>
+		</div>
+		<div class="form-group collapse navbar-collapse" id="myNavbar">
+			<form class="navbar-form navbar-right" method="post" action="${contextPath}/member/loginForm.do">
+				<div class="form-group">
+					<input type="text" class="form-control" name="id" size="10" maxlength="10" placeholder="아이디"/>
+					<input type="password" class="form-control" name="passwd" size="12" maxlength="20" placeholder="비밀번호"/>
+				</div>
+				<a href="" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span> 책방 둘러보기</a>
+				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 로그인</button>
+				<a href="${contextPath}/member/memberForm.do"" class="btn btn-warning"><span class="glyphicon glyphicon-user"></span> 회원가입</a>
+				<a href="${contextPath}/member/listMembers.do"" class="btn btn-info"><span class="glyphicon glyphicon-user"></span> 회원목록</a>
+			</form>
+		</div>
+	</div>
 </nav>
+
 
 <table border="0" width="100%">
 	<tr>

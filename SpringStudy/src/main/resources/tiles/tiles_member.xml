@@ -13,14 +13,26 @@
 		<put-attribute	name="footer"	value="/WEB-INF/views/common/footer.jsp"/>			
 	</definition>
 
+	<definition name="baseLayout2"	template="/WEB-INF/views/common/layout2.jsp">
+		<put-attribute 	name="title"	value=""/>
+		<put-attribute 	name="header"	value="/WEB-INF/views/common/header2.jsp"/>
+		<put-attribute	name="body"		value=""/>
+		<put-attribute	name="footer"	value="/WEB-INF/views/common/footer.jsp"/>			
+	</definition>
+
 	<definition name="main" extends="baseLayout">
 		<put-attribute	name="title"	value="메인 페이지"/>
 		<put-attribute	name="body"		value="/WEB-INF/views/main.jsp"/>
 	</definition>
 
-	<definition name="/member/memberForm" extends="baseLayout">
+	<definition name="/member/memberForm" extends="baseLayout2">
 		<put-attribute	name="title"	value="회원 목록"/>
 		<put-attribute	name="body"		value="/WEB-INF/views/member/memberForm.jsp"/>
+	</definition>
+
+	<definition name="/member/listMembers" extends="baseLayout2">
+		<put-attribute	name="title"	value="회원 전체 목록 조회"/>
+		<put-attribute	name="body"		value="/WEB-INF/views/member/listMembers.jsp"/>
 	</definition>
 
 
