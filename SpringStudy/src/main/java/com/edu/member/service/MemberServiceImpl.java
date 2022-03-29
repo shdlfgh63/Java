@@ -8,13 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.edu.member.controller.MemberController;
 import com.edu.member.dao.MemberDAO;
 import com.edu.member.vo.MemberVO;
 
-@Service("MemberService")
 //-----------------------------------------------------------------------------------------------------------
-//public class MemberServiceImpl implements MemberService
+// public class MemberServiceImpl implements MemberService
 //-----------------------------------------------------------------------------------------------------------
+@Service("memberService")
 public class MemberServiceImpl implements MemberService {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
@@ -55,6 +56,22 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO selectMember(String id) throws DataAccessException {
 		MemberVO memberVO = memberDAO.selectMember(id);
 		return memberVO;
+	}
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 아이디에 해당하는 회원 정보 수정하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int modMember(MemberVO memberVO) throws DataAccessException {
+		return memberDAO.updateMember(memberVO);
+	}
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 로그인 처리
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public MemberVO login(MemberVO memberVO) throws DataAccessException {
+		return memberDAO.loginByID(memberVO);
 	}
 	
 	

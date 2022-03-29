@@ -36,6 +36,30 @@
 		where	id = #{id}
 		]]>
 	</delete>
+	
+	<!-- 아이디에 해당하는 회원의 정보를 찾는다. -->
+	<select id="selectMember" parameterType="String" resultType="memberVO">
+		<![CDATA[
+		select	*	from t_member
+		where	id = #{id}
+		]]>
+	</select>
 
+	<!-- 아이디에 해당하는 회원의 정보를 수정한다. -->
+	<update id="updateMember" parameterType="memberVO">
+		<![CDATA[
+		update t_member
+		set pwd = #{pwd}, name = #{name}, email = #{email}
+		where	id = #{id}
+		]]>
+	</update>
+	
+	<!-- 입력받은 아이디와 비밀번호가 존재하는지 알아낸다. -->
+	<select id="loginByID" parameterType="memberVO" resultType="memberVO">
+		<![CDATA[
+		select	*	from t_member
+		where	id=#{id} and pwd=#{pwd}
+		]]>
+	</select>
 
 </mapper>

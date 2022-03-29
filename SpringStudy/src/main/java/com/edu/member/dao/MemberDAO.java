@@ -7,7 +7,7 @@ import org.springframework.dao.DataAccessException;
 import com.edu.member.vo.MemberVO;
 
 //-----------------------------------------------------------------------------------------------------------
-//public interface MemberDAO
+// public interface MemberDAO
 //-----------------------------------------------------------------------------------------------------------
 public interface MemberDAO {
 
@@ -30,6 +30,20 @@ public interface MemberDAO {
 	// 아이디에 해당하는 회원 정보 조회
 	//-----------------------------------------------------------------------------------------------------------
 	public MemberVO selectMember(String id) throws DataAccessException;
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 아이디에 해당하는 회원 정보 수정하기
+	//-----------------------------------------------------------------------------------------------------------
+	public int updateMember(MemberVO memberVO) throws DataAccessException;
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 로그인 처리
+	//-----------------------------------------------------------------------------------------------------------
+	public MemberVO loginByID(MemberVO memberVO) throws DataAccessException;
+	
+	
+	
+	
 	
 
 } // End - public interface MemberDAO

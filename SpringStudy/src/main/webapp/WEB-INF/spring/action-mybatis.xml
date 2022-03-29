@@ -7,8 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	
-	
+
 	<bean id="propertyPlaceholderConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -24,17 +23,15 @@
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"/>
-		<!-- 노민호 modelconfig.xml 쪽 정보를 못가져와서 mapper 쪽에서 MemberVO alias 값을 못가져오고 있어서 에러 났었음  -->
-		<property name="configLocation" value="classpath:mybatis/model/modelConfig.xml"/>
+		<property name="dataSource" 		ref="dataSource"/>
+		<property name="configLocation"		value="classpath:mybatis/model/modelConfig.xml"/>
+		<property name="mapperLocations" 	value="classpath:mybatis/mappers/*.xml"/>
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	
-	
+
 
 </beans>
 
