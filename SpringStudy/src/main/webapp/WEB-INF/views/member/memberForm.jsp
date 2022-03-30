@@ -24,7 +24,7 @@
 <body>
 
 <div class="container">
-   <form class="form-horizontal" method="post" name="memInsForm" action="${contextPath}/member/addmemberForm.do">
+   <form class="form-horizontal" method="POST" name="memInsForm" action="${contextPath}/member/addmember.do">
           <div class="form-group">
              <div class="col-sn-offset-3 col-sum-5">
                  <h2 align="center">회원가입</h2>
@@ -41,6 +41,7 @@
               <div class="col-sm-3">
                 <input type="password" class="form-control" id="pwd" name="pwd" maxlength="20" placeholder="비밀번호 입력"/>
               </div>
+            </div>  
               <div class="form-group">
               <label for="password" class="col-sm-3 control-label">비밀번호 확인</label>
               <div class="col-sm-3">

@@ -140,7 +140,7 @@ public class MemberControllerImpl implements MemberController {
 	//-----------------------------------------------------------------------------------------------------------
 	// 로그인 화면 띄우기
 	//-----------------------------------------------------------------------------------------------------------
-	@RequestMapping(value="/member/loginForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="/member/loginForm.do", method=RequestMethod.POST)
 	public ModelAndView loginForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ModelAndView mav = new ModelAndView();
