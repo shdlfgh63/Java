@@ -9,24 +9,9 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
     
      
-     <context:component-scan base-package="spring.di.ui"/>
-    <bean id="exam" class="spring.di.entity.NewExam" />
-     <!--  
     
-    <bean id="exam2" class="spring.di.entity.NewExam" p:kor="10" p:eng="10" />     
-   <bean id="console" class="spring.di.ui.InlineExamConsole">  
-    <property name="exam" ref="exam"/>
-    </bean> --> 
-     
-     
-     
+    <bean id="exam" class="spring.aop.entity.NewExam" p:kor="1" p:eng="1" p:math="1" p:com="1" />
    
-   <!--   <bean id="exams" class="java.util.ArrayList"> 
-      <constructor-arg>
-        <list>
-           <bean class="spring.di.entity.NewExam" p:kor="1" p:eng="1"/>
-           <ref bean="exam"/>
-        </list>
-      </constructor-arg>
-     </bean> -->
+   
+        
 </beans>
